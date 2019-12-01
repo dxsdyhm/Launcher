@@ -120,7 +120,7 @@
         android:id="@+id/layout_clean"
         android:layout_width="255dp"
         android:layout_height="202dp"
-        android:layout_marginLeft="941dp"
+        android:layout_marginLeft="940dp"
         android:layout_marginTop="330dp"
         android:descendantFocusability="beforeDescendants"
         android:focusable="true"

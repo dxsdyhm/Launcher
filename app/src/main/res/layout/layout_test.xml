@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/lb_guidedactions_vertical_padding"
+    android:paddingRight="@dimen/lb_guidedactions_vertical_padding">
+
+    <com.droidlogic.mboxlauncher.MyRelativeLayout
+        android:id="@+id/layout_nclean"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/img_nclean"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_nclean1" />
+
+        <TextView
+            android:id="@+id/tx_nclean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="17dp"
+            android:textColor="@color/btn_text_color"
+            android:textSize="1sp"
+            android:textStyle="normal" />
+    </com.droidlogic.mboxlauncher.MyRelativeLayout>
+
+    <com.droidlogic.mboxlauncher.StatusBar
+        android:id="@+id/status_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintRight_toLeftOf="@+id/layout_nclean"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.13" />
+
+    <com.droidlogic.mboxlauncher.MyRelativeLayout
+        android:id="@+id/layout_video"
+        android:layout_width="270dp"
+        android:layout_height="423dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline2"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/layout_app"
+        app:layout_constraintTop_toBottomOf="@+id/guideline">
+
+        <ImageView
+            android:id="@+id/img_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_google" />
+
+        <TextView
+            android:id="@+id/tx_local"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="379dp"
+            android:text="@string/str_local"
+            android:textColor="@color/btn_text_color"
+            android:textSize="23sp" />
+    </com.droidlogic.mboxlauncher.MyRelativeLayout>
+
+    <com.droidlogic.mboxlauncher.MyRelativeLayout
+        android:id="@+id/layout_app"
+        android:layout_width="270dp"
+        android:layout_height="423dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline2"
+        app:layout_constraintLeft_toRightOf="@+id/layout_video"
+        app:layout_constraintRight_toLeftOf="@+id/layout_local"
+        app:layout_constraintTop_toBottomOf="@+id/guideline">
+
+        <ImageView
+            android:id="@+id/img_app"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/img_app" />
+
+        <TextView
+            android:id="@+id/tx_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="380dp"
+            android:text="@string/str_app"
+            android:textColor="@color/btn_text_color"
+            android:textSize="23sp" />
+    </com.droidlogic.mboxlauncher.MyRelativeLayout>
+
+    <com.droidlogic.mboxlauncher.MyRelativeLayoutgandm
+        android:id="@+id/layout_local"
+        android:layout_width="255dp"
+        android:layout_height="202dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintLeft_toRightOf="@+id/layout_app"
+        app:layout_constraintRight_toLeftOf="@+id/layout_time"
+        app:layout_constraintTop_toTopOf="@+id/layout_app">
+
+        <ImageView
+            android:id="@+id/img_local"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_video" />
+
+        <TextView
+            android:id="@+id/tx_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="155dp"
+            android:text="@string/str_video"
+            android:textColor="@color/btn_text_color"
+            android:textSize="23sp" />
+    </com.droidlogic.mboxlauncher.MyRelativeLayoutgandm>
+
+    <com.droidlogic.mboxlauncher.MyRelativeLayoutgandm
+        android:id="@+id/layout_recommend"
+        android:layout_width="255dp"
+        android:layout_height="202dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_app"
+        app:layout_constraintLeft_toLeftOf="@+id/layout_local"
+        app:layout_constraintRight_toRightOf="@+id/layout_local">
+
+        <ImageView
+            android:id="@+id/img_recommend"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_recommend" />
+
+        <TextView
+            android:id="@+id/tx_recommend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="155dp"
+            android:text="@string/str_recommend"
+            android:textColor="@color/btn_text_color"
+            android:textSize="23sp" />
+    </com.droidlogic.mboxlauncher.MyRelativeLayoutgandm>
+
+    <com.droidlogic.mboxlauncher.MyRelativeLayout
+        android:id="@+id/layout_clean"
+        android:layout_width="255dp"
+        android:layout_height="202dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_app"
+        app:layout_constraintLeft_toLeftOf="@+id/layout_time"
+        app:layout_constraintRight_toRightOf="@id/layout_time">
+
+        <ImageView
+            android:id="@+id/img_clean"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_clean" />
+
+        <TextView
+            android:id="@+id/tx_clean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="150dp"
+            android:textColor="@color/btn_text_color"
+            android:textSize="21dp" />
+    </com.droidlogic.mboxlauncher.MyRelativeLayout>
+
+    <com.droidlogic.mboxlauncher.MyRelativeLayout
+        android:id="@+id/layout_time"
+        android:layout_width="257dp"
+        android:layout_height="97dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintLeft_toRightOf="@+id/layout_local"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/layout_app">
+
+        <ImageView
+            android:id="@+id/img_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_time" />
+
+        <TextView
+            android:id="@+id/tx_time1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
+            android:textColor="@color/btn_text_color"
+            android:textSize="32sp"
+            android:textStyle="normal" />
+    </com.droidlogic.mboxlauncher.MyRelativeLayout>
+
+    <TextView
+        android:id="@+id/tx_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        android:textColor="@color/btn_text_color"
+        android:textSize="32sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@+id/tx_date"
+        app:layout_constraintLeft_toLeftOf="@+id/layout_time"
+        app:layout_constraintRight_toRightOf="@+id/layout_time"
+        app:layout_constraintTop_toTopOf="@+id/layout_time"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tx_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        android:textColor="@color/btn_text_color"
+        android:textSize="22sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_time"
+        app:layout_constraintLeft_toLeftOf="@+id/layout_time"
+        app:layout_constraintRight_toRightOf="@+id/layout_time"
+        app:layout_constraintTop_toBottomOf="@+id/tx_time" />
+
+    <com.droidlogic.mboxlauncher.MyRelativeLayout
+        android:id="@+id/layout_weather"
+        android:layout_width="257dp"
+        android:layout_height="97dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_local"
+        app:layout_constraintLeft_toLeftOf="@+id/layout_time"
+        app:layout_constraintRight_toRightOf="@+id/layout_time">
+
+        <ImageView
+            android:id="@+id/img_weather"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_weather" />
+
+        <TextView
+            android:id="@+id/tx_img_weather1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/btn_text_color"
+            android:textSize="21dp" />
+    </com.droidlogic.mboxlauncher.MyRelativeLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+</androidx.constraintlayout.widget.ConstraintLayout>

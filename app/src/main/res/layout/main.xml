@@ -14,9 +14,9 @@
             android:layout_height="match_parent"
             android:descendantFocusability="afterDescendants">
 
-            <include layout="@layout/layout_statusbar" />
+<!--            <include layout="@layout/layout_statusbar" />-->
 
-            <include layout="@layout/layout_rect_group" />
+            <include layout="@layout/layout_test" />
 
             <include layout="@layout/layout_shortcut" />
         </RelativeLayout>
@@ -44,5 +44,5 @@
             android:visibility="gone" />
     </AbsoluteLayout>
 
-    <include layout="@layout/layout_icon" />
+<!--    <include layout="@layout/layout_icon" />-->
 </RelativeLayout>

@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/layout_menu" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginLeft="77dp" android:layout_marginTop="570dp">
-    <com.droidlogic.mboxlauncher.MyGridLayout android:orientation="horizontal" android:id="@+id/gv_shortcut" android:descendantFocusability="afterDescendants" android:layout_width="1170dp" android:layout_height="50dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:rowCount="1" android:columnCount="11"/>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="77dp"
+    android:layout_marginTop="570dp">
+
+    <com.droidlogic.mboxlauncher.MyGridLayout
+        android:id="@+id/gv_shortcut"
+        android:layout_width="1170dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:columnCount="11"
+        android:descendantFocusability="afterDescendants"
+        android:orientation="horizontal"
+        android:rowCount="1" />
 </RelativeLayout>
