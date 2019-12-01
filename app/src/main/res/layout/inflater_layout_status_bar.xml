@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="horizontal" android:id="@+id/top_status_bar_container" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <ImageView android:id="@+id/status_wifi" android:layout_width="55dp" android:layout_height="55dp" android:layout_margin="3dp" android:src="@drawable/wifi1"/>
+    <ImageView android:id="@+id/status_sdcard" android:layout_width="55dp" android:layout_height="55dp" android:layout_margin="3dp" android:src="@drawable/img_status_sdcard1"/>
+    <ImageView android:id="@+id/status_usb" android:layout_width="55dp" android:layout_height="55dp" android:layout_margin="3dp" android:src="@drawable/img_status_usb1"/>
+    <ImageView android:id="@+id/status_ethernet" android:layout_width="55dp" android:layout_height="55dp" android:layout_margin="3dp" android:src="@drawable/img_status_ethernet1"/>
+</LinearLayout>

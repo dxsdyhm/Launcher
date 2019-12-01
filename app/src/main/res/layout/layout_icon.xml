@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tx_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1030dp"
+        android:layout_marginTop="112dp"
+        android:textColor="@color/btn_text_color"
+        android:textSize="32sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/tx_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1000dp"
+        android:layout_marginTop="158dp"
+        android:textColor="@color/btn_text_color"
+        android:textSize="22sp"
+        android:textStyle="normal" />
+</RelativeLayout>

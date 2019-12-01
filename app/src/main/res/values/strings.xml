@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Launcher</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="str_recommend"></string>
+    <string name="city_toast">Please enter the city:</string>
+    <string name="city_calcel">Cancel</string>
+    <string name="city_ok">OK</string>
+    <string name="str_local_media">Media Center</string>
+    <string name="str_music">FileExplorer</string>
+    <string name="str_app_video">Screen Mirroring</string>
+    <string name="img_desc">image</string>
+    <string name="str_video"></string>
+    <string name="str_local"></string>
+    <string name="str_app"></string>
+    <string name="str_day">日</string>
+    <string name="str_add">Add</string>
+</resources>

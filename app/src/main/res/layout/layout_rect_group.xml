@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_rect_group"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.droidlogic.mboxlauncher.MyRelativeLayout
+        android:id="@+id/layout_video"
+        android:layout_width="270dp"
+        android:layout_height="423dp"
+        android:layout_marginLeft="84dp"
+        android:layout_marginTop="110dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <ImageView
+            android:id="@+id/img_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_google" />
+
+        <TextView
+            android:id="@+id/tx_local"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="379dp"
+            android:text="@string/str_local"
+            android:textColor="@color/btn_text_color"
+            android:textSize="23sp" />
+    </com.droidlogic.mboxlauncher.MyRelativeLayout>
+
+    <com.droidlogic.mboxlauncher.MyRelativeLayoutgandm
+        android:id="@+id/layout_recommend"
+        android:layout_width="255dp"
+        android:layout_height="202dp"
+        android:layout_marginLeft="664dp"
+        android:layout_marginTop="330dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <ImageView
+            android:id="@+id/img_recommend"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_recommend" />
+
+        <TextView
+            android:id="@+id/tx_recommend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="155dp"
+            android:text="@string/str_recommend"
+            android:textColor="@color/btn_text_color"
+            android:textSize="23sp" />
+    </com.droidlogic.mboxlauncher.MyRelativeLayoutgandm>
+
+    <com.droidlogic.mboxlauncher.MyRelativeLayout
+        android:id="@+id/layout_app"
+        android:layout_width="370dp"
+        android:layout_height="423dp"
+        android:layout_marginLeft="325dp"
+        android:layout_marginTop="110dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <ImageView
+            android:id="@+id/img_app"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/img_app" />
+
+        <TextView
+            android:id="@+id/tx_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="380dp"
+            android:text="@string/str_app"
+            android:textColor="@color/btn_text_color"
+            android:textSize="23sp" />
+    </com.droidlogic.mboxlauncher.MyRelativeLayout>
+
+    <com.droidlogic.mboxlauncher.MyRelativeLayoutgandm
+        android:id="@+id/layout_local"
+        android:layout_width="255dp"
+        android:layout_height="202dp"
+        android:layout_marginLeft="664dp"
+        android:layout_marginTop="110dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <ImageView
+            android:id="@+id/img_local"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_video" />
+
+        <TextView
+            android:id="@+id/tx_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="155dp"
+            android:text="@string/str_video"
+            android:textColor="@color/btn_text_color"
+            android:textSize="23sp" />
+    </com.droidlogic.mboxlauncher.MyRelativeLayoutgandm>
+
+    <com.droidlogic.mboxlauncher.MyRelativeLayout
+        android:id="@+id/layout_clean"
+        android:layout_width="255dp"
+        android:layout_height="202dp"
+        android:layout_marginLeft="941dp"
+        android:layout_marginTop="330dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <ImageView
+            android:id="@+id/img_clean"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_clean" />
+
+        <TextView
+            android:id="@+id/tx_clean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="150dp"
+            android:textColor="@color/btn_text_color"
+            android:textSize="21dp" />
+    </com.droidlogic.mboxlauncher.MyRelativeLayout>
+
+    <com.droidlogic.mboxlauncher.MyRelativeLayout
+        android:id="@+id/layout_time"
+        android:layout_width="257dp"
+        android:layout_height="97dp"
+        android:layout_marginLeft="940dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginBottom="82dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <ImageView
+            android:id="@+id/img_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_time" />
+
+        <TextView
+            android:id="@+id/tx_time1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
+            android:textColor="@color/btn_text_color"
+            android:textSize="32sp"
+            android:textStyle="normal" />
+    </com.droidlogic.mboxlauncher.MyRelativeLayout>
+
+    <com.droidlogic.mboxlauncher.MyRelativeLayout
+        android:id="@+id/layout_weather"
+        android:layout_width="257dp"
+        android:layout_height="97dp"
+        android:layout_marginLeft="940dp"
+        android:layout_marginTop="215dp"
+        android:layout_marginBottom="82dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <ImageView
+            android:id="@+id/img_weather"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_weather" />
+
+        <TextView
+            android:id="@+id/tx_img_weather1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/btn_text_color"
+            android:textSize="21dp" />
+    </com.droidlogic.mboxlauncher.MyRelativeLayout>
+
+    <com.droidlogic.mboxlauncher.MyRelativeLayout
+        android:id="@+id/layout_nclean"
+        android:layout_width="48dp"
+        android:layout_height="49dp"
+        android:layout_marginLeft="1158dp"
+        android:layout_marginTop="40dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <ImageView
+            android:id="@+id/img_nclean"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_nclean1" />
+
+        <TextView
+            android:id="@+id/tx_nclean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="17dp"
+            android:textColor="@color/btn_text_color"
+            android:textSize="1sp"
+            android:textStyle="normal" />
+    </com.droidlogic.mboxlauncher.MyRelativeLayout>
+
+    <com.droidlogic.mboxlauncher.StatusBar
+        android:id="@+id/status_bar"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="840dp"
+        android:layout_marginTop="35dp"
+        android:gravity="right"
+        android:visibility="visible" />
+</RelativeLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="280dp"
+    android:layout_height="150dp"
+    android:layout_marginLeft="870dp"
+    android:layout_marginTop="160dp"
+    android:background="@drawable/lv_bgreplace"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="@string/city_toast"
+        android:textColor="@color/btn_text_color"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/line1" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/lv_edit_bg"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edit_city"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@null"
+            android:gravity="center_horizontal"
+            android:inputType="textNoSuggestions"
+            android:singleLine="true"
+            android:textColor="@color/colorNormalWhite"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="18dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/lv_btc_bg"
+            android:text="@string/city_calcel"
+            android:textColor="@color/btn_text_color"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/lv_btc_bg"
+            android:text="@string/city_ok"
+            android:textColor="@color/btn_text_color"
+            android:textSize="18sp" />
+    </LinearLayout>
+</LinearLayout>

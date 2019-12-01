@@ -1,0 +1,8 @@
+<resources>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="item_text_color">#ffffffff</color>
+    <color name="btn_text_color">#ffffffff</color>
+    <color name="colorNormalWhite">#ffffffff</color>
+    <color name="transparent_background">#00000000</color>
+</resources>
