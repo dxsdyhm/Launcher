@@ -263,7 +263,7 @@ public class Launcher extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Log.d("MediaBoxLauncher", "------onCreate");
+        Log.d("MediaBoxLauncher", "------onCreate_dxs");
         //getWindow().setBackgroundDrawable(new BitmapDrawable(getResources(), BitmapFactory.decodeResource(getResources(), R.drawable.bg)));
         this.mWindowManager = Stub.asInterface(ServiceManager.getService("window"));
         scale_value = getAnimationScaleValue();
