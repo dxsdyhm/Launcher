@@ -10,6 +10,14 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    signingConfigs {
+        release {
+            keyAlias 'system'
+            keyPassword 'qmx2018'
+            storeFile file('../key/system.keystore') //签名文件的位置
+            storePassword 'qmx2018'
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false

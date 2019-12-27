@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">[Ĥéļļö Ŵöŕļð one two]</string>
+    <string name="app_name">[Ḿéðîåβöх ļåûñçĥéŕ one two three]</string>
+    <string name="str_video">[]</string>
+    <string name="str_recommend">[]</string>
+    <string name="str_setting">[]</string>
+    <string name="str_app">[]</string>
+    <string name="str_music">[]</string>
+    <string name="str_local">[]</string>
+    <string name="str_nospace">[Šĥöŕţçûţš ñö šþåçé¡ one two three]</string>
+    <string name="str_day">[日 one]</string>
+    <string name="str_add">[Åðð one]</string>
+    <string name="img_desc">[îḿåĝé one]</string>
+    <string name="str_exit">[Éхîţ one]</string>
+    <string name="accessibility_description">[åççéššîɓîļîţý_ðéšçŕîþţîöñ one two three]</string>
+    <string name="accessibility_service_label">[åççéššîɓîļîţý_šéŕVîçé_ļåɓéļ one two three four]</string>
+    <string name="sun">[Šûñðåý one two]</string>
+    <string name="mon">[Ḿöñðåý one two]</string>
+    <string name="tue">[Ţûéšðåý one two]</string>
+    <string name="wed">[Ŵéðñéšðåý one two]</string>
+    <string name="thu">[Ţĥûŕšðåý one two]</string>
+    <string name="fri">[Fŕîðåý one two]</string>
+    <string name="sat">[Šåţûŕðåý one two]</string>
+</resources>

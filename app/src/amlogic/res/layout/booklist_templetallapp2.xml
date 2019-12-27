@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+    <ImageView android:id="@+id/novalue_icon33" android:background="@drawable/intogrid" android:layout_width="1dp" android:layout_height="3dp" android:layout_centerHorizontal="true"/>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/loadimageapk33" android:layout_width="178dp" android:layout_height="178dp" android:layout_below="@+id/novalue_icon33" android:layout_centerHorizontal="true">
+        <ImageView android:id="@+id/book_icon33" android:layout_width="100dp" android:layout_height="100dp" android:layout_marginTop="0dp" android:layout_centerHorizontal="true"/>
+        <TextView android:textSize="24dp" android:textColor="@color/btn_text_color" android:ellipsize="marquee" android:gravity="center" android:id="@+id/myid33" android:layout_width="140dp" android:layout_height="wrap_content" android:textScaleX="1" android:singleLine="true" android:layout_below="@+id/book_icon33" android:layout_centerHorizontal="true"/>
+    </LinearLayout>
+    <ImageView android:id="@+id/novalue_icontotext33" android:background="@drawable/intogrid" android:layout_width="1dp" android:layout_height="3dp" android:layout_below="@+id/loadimageapk33" android:layout_centerHorizontal="true"/>
+</LinearLayout>

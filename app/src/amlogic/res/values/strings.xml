@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World</string>
+    <string name="app_name">MediaBox launcher</string>
+    <string name="str_video" />
+    <string name="str_recommend" />
+    <string name="str_setting" />
+    <string name="str_app" />
+    <string name="str_music" />
+    <string name="str_local" />
+    <string name="str_nospace">Shortcuts no space!</string>
+    <string name="str_day">日</string>
+    <string name="str_add">Add</string>
+    <string name="img_desc">image</string>
+    <string name="str_exit">Exit</string>
+    <string name="accessibility_description">accessibility_description</string>
+    <string name="accessibility_service_label">accessibility_service_label</string>
+    <string name="sun">Sunday</string>
+    <string name="mon">Monday</string>
+    <string name="tue">Tuesday</string>
+    <string name="wed">Wednesday</string>
+    <string name="thu">Thursday</string>
+    <string name="fri">Friday</string>
+    <string name="sat">Saturday</string>
+</resources>

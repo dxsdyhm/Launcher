@@ -1,0 +1,5 @@
+  22.462844] Final fw_path=/system/vendor/modules/fw_bcm4339a0_ag.bin
+[   22.471052] Final nv_path=/system/vendor/modules/nvram_ap6335.txt
+[   22.479579] Final clm_path=/system/vendor/modules/clm_bcmdhd.blob
+[   22.486980] Final conf_path=/system/vendor/modules/config_ap6335.txt
+
