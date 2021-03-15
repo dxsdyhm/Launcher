@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:background="@android:color/transparent" android:layout_width="match_parent" android:layout_height="match_parent">
-    <ImageView android:id="@+id/iv_rocket" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/rocket_fire" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
-    <RelativeLayout android:id="@+id/rl_cloud" android:layout_width="match_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@+id/iv_cloud" android:background="@drawable/desktop_smoke_m" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
-        <ImageView android:id="@+id/iv_cloud_line" android:background="@drawable/desktop_smoke_t" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_above="@+id/iv_cloud" android:layout_centerHorizontal="true"/>
-    </RelativeLayout>
-</RelativeLayout>

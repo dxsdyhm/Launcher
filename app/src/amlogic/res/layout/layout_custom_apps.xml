@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
-    <GridView android:id="@+id/grid_add_apps" android:background="@drawable/bg_add_apps" android:paddingLeft="10dp" android:paddingTop="10dp" android:paddingRight="10dp" android:paddingBottom="10dp" android:fadingEdgeLength="48dp" android:layout_width="match_parent" android:layout_height="300dp" android:listSelector="@drawable/frame" android:drawSelectorOnTop="false" android:cacheColorHint="#00000000" android:horizontalSpacing="5dp" android:verticalSpacing="5dp" android:numColumns="9" android:layout_alignParentLeft="true"/>
-    <ImageView android:id="@+id/img_screenshot" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-    <ImageView android:id="@+id/img_screenshot_keep" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-    <ImageView android:id="@+id/img_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-    <ImageView android:id="@+id/img_dim" android:visibility="invisible" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/img_dim"/>
-</AbsoluteLayout>

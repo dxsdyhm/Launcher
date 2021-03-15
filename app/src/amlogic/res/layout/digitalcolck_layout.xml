@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
-    <LinearLayout android:gravity="right" android:layout_width="236dp" android:layout_height="wrap_content" android:layout_marginLeft="70dp" android:layout_marginTop="102dp">
-        <TextView android:textSize="24dp" android:textStyle="bold" android:textColor="@android:color/black" android:id="@+id/textViewWeek" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Wednesday"/>
-    </LinearLayout>
-    <TextView android:textSize="38dp" android:textStyle="bold" android:textColor="@android:color/black" android:id="@+id/textViewTime" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="18dp" android:layout_marginTop="25dp" android:text="08:58:58" android:shadowColor="@android:color/white"/>
-    <TextView android:textSize="24dp" android:textColor="@android:color/black" android:id="@+id/textViewAMPM" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="268dp" android:layout_marginTop="37dp" android:text="AM" android:shadowColor="@android:color/black"/>
-    <TextView android:textSize="24dp" android:textStyle="bold" android:textColor="@android:color/black" android:id="@+id/textViewDate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="22dp" android:layout_marginTop="103dp" android:text="13/04/2016"/>
-</RelativeLayout>
