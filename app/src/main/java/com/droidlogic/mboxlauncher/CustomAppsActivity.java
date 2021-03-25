@@ -17,11 +17,14 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.AbsoluteLayout.LayoutParams;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.blankj.utilcode.util.SPUtils;
 import com.hcy.launcher.R;
 
 import java.io.BufferedReader;
@@ -39,6 +42,8 @@ import java.util.Map;
 public class CustomAppsActivity extends Activity {
     public static int CONTENT_HEIGHT;
     static final Object mLock = new Object[0];
+    public final static String SHORTCUT_PATH = "/data/data/com.hcy.launcher/shortcut.cfg";
+    public final static String DEFAULT_SHORTCUR_PATH = "/system/etc/default_shortcut_simple.cfg";
     private TranslateAnimation exitTransAnim;
     /* access modifiers changed from: private */
     public GridView gv = null;
@@ -56,6 +61,12 @@ public class CustomAppsActivity extends Activity {
     private File mFile;
     /* access modifiers changed from: private */
     public String str_custom_apps;
+
+    public final static String HOME_SHORTCUT_HEAD = "Home_Shortcut:";
+    public final static String VIDEO_SHORTCUT_HEAD = "Video_Shortcut:";
+    public final static String RECOMMEND_SHORTCUT_HEAD = "Recommend_Shortcut:";
+    public final static String MUSIC_SHORTCUT_HEAD = "Music_shortcut:";
+    public final static String LOCAL_SHORTCUT_HEAD = "Local_Shortcut:";
 
     private class MyAnimationListener implements AnimationListener {
         private int arrow_x_center;
@@ -143,140 +154,43 @@ public class CustomAppsActivity extends Activity {
         getWindow().setFlags(1024, 1024);
         setContentView(R.layout.layout_custom_apps);
         this.gv = (GridView) findViewById(R.id.grid_add_apps);
-        this.gv.setOnItemClickListener(new OnItemClickListener() {
-            /* JADX WARNING: Code restructure failed: missing block: B:28:0x012d, code lost:
-                return;
-             */
-            /* Code decompiled incorrectly, please refer to instructions dump. */
-            public void onItemClick(android.widget.AdapterView<?> r9, android.view.View r10, int r11, long r12) {
-                /*
-                    r8 = this;
-                    java.lang.Object r0 = r9.getItemAtPosition(r11)
-                    java.util.Map r0 = (java.util.Map) r0
-                    java.lang.Object r1 = com.droidlogic.mboxlauncher.CustomAppsActivity.mLock
-                    monitor-enter(r1)
-                    r2 = 1
-                    com.droidlogic.mboxlauncher.Launcher.ifChangedShortcut = r2     // Catch:{ all -> 0x012e }
-                    java.lang.String r2 = "item_type"
-                    java.lang.Object r2 = r0.get(r2)     // Catch:{ all -> 0x012e }
-                    r3 = 2131230921(0x7f0800c9, float:1.8077908E38)
-                    java.lang.Integer r3 = java.lang.Integer.valueOf(r3)     // Catch:{ all -> 0x012e }
-                    boolean r2 = r2.equals(r3)     // Catch:{ all -> 0x012e }
-                    if (r2 == 0) goto L_0x0026
-                    com.droidlogic.mboxlauncher.CustomAppsActivity r2 = com.droidlogic.mboxlauncher.CustomAppsActivity.this     // Catch:{ all -> 0x012e }
-                    r2.finish()     // Catch:{ all -> 0x012e }
-                    goto L_0x012c
-                L_0x0026:
-                    java.lang.String r2 = "item_sel"
-                    java.lang.Object r2 = r0.get(r2)     // Catch:{ all -> 0x012e }
-                    r3 = 2131230923(0x7f0800cb, float:1.8077912E38)
-                    java.lang.Integer r4 = java.lang.Integer.valueOf(r3)     // Catch:{ all -> 0x012e }
-                    boolean r2 = r2.equals(r4)     // Catch:{ all -> 0x012e }
-                    if (r2 == 0) goto L_0x00db
-                    java.lang.String r2 = com.droidlogic.mboxlauncher.Launcher.current_shortcutHead     // Catch:{ all -> 0x012e }
-                    java.lang.String r3 = "Home_Shortcut:"
-                    boolean r2 = r2.equals(r3)     // Catch:{ all -> 0x012e }
-                    if (r2 == 0) goto L_0x006e
-                    com.droidlogic.mboxlauncher.CustomAppsActivity r2 = com.droidlogic.mboxlauncher.CustomAppsActivity.this     // Catch:{ all -> 0x012e }
-                    int r2 = r2.homeShortcutCount     // Catch:{ all -> 0x012e }
-                    int r3 = com.droidlogic.mboxlauncher.Launcher.HOME_SHORTCUT_COUNT     // Catch:{ all -> 0x012e }
-                    if (r2 < r3) goto L_0x006e
-                    com.droidlogic.mboxlauncher.CustomAppsActivity r2 = com.droidlogic.mboxlauncher.CustomAppsActivity.this     // Catch:{ all -> 0x012e }
-                    android.content.Context r2 = r2.mContext     // Catch:{ all -> 0x012e }
-                    com.droidlogic.mboxlauncher.CustomAppsActivity r3 = com.droidlogic.mboxlauncher.CustomAppsActivity.this     // Catch:{ all -> 0x012e }
-                    android.content.Context r3 = r3.mContext     // Catch:{ all -> 0x012e }
-                    android.content.res.Resources r3 = r3.getResources()     // Catch:{ all -> 0x012e }
-                    r4 = 2131689958(0x7f0f01e6, float:1.9008946E38)
-                    java.lang.String r3 = r3.getString(r4)     // Catch:{ all -> 0x012e }
-                    r4 = 0
-                    android.widget.Toast r2 = android.widget.Toast.makeText(r2, r3, r4)     // Catch:{ all -> 0x012e }
-                    r2.show()     // Catch:{ all -> 0x012e }
-                    monitor-exit(r1)     // Catch:{ all -> 0x012e }
-                    return
-                L_0x006e:
-                    java.lang.String r2 = "item_symbol"
-                    java.lang.Object r2 = r0.get(r2)     // Catch:{ all -> 0x012e }
-                    android.content.ComponentName r2 = (android.content.ComponentName) r2     // Catch:{ all -> 0x012e }
-                    java.lang.String r2 = r2.getPackageName()     // Catch:{ all -> 0x012e }
-                    com.droidlogic.mboxlauncher.CustomAppsActivity r3 = com.droidlogic.mboxlauncher.CustomAppsActivity.this     // Catch:{ all -> 0x012e }
-                    java.lang.String r3 = r3.str_custom_apps     // Catch:{ all -> 0x012e }
-                    if (r3 != 0) goto L_0x009e
-                    com.droidlogic.mboxlauncher.CustomAppsActivity r3 = com.droidlogic.mboxlauncher.CustomAppsActivity.this     // Catch:{ all -> 0x012e }
-                    java.lang.StringBuilder r4 = new java.lang.StringBuilder     // Catch:{ all -> 0x012e }
-                    r4.<init>()     // Catch:{ all -> 0x012e }
-                    java.lang.String r5 = com.droidlogic.mboxlauncher.Launcher.current_shortcutHead     // Catch:{ all -> 0x012e }
-                    r4.append(r5)     // Catch:{ all -> 0x012e }
-                    r4.append(r2)     // Catch:{ all -> 0x012e }
-                    java.lang.String r5 = ";"
-                    r4.append(r5)     // Catch:{ all -> 0x012e }
-                    java.lang.String r4 = r4.toString()     // Catch:{ all -> 0x012e }
-                    r3.str_custom_apps = r4     // Catch:{ all -> 0x012e }
-                    goto L_0x00b4
-                L_0x009e:
-                    com.droidlogic.mboxlauncher.CustomAppsActivity r3 = com.droidlogic.mboxlauncher.CustomAppsActivity.this     // Catch:{ all -> 0x012e }
-                    java.lang.StringBuilder r4 = new java.lang.StringBuilder     // Catch:{ all -> 0x012e }
-                    r4.<init>()     // Catch:{ all -> 0x012e }
-                    r4.append(r2)     // Catch:{ all -> 0x012e }
-                    java.lang.String r5 = ";"
-                    r4.append(r5)     // Catch:{ all -> 0x012e }
-                    java.lang.String r4 = r4.toString()     // Catch:{ all -> 0x012e }
-                    com.droidlogic.mboxlauncher.CustomAppsActivity.access$284(r3, r4)     // Catch:{ all -> 0x012e }
-                L_0x00b4:
-                    java.lang.Object r3 = r9.getItemAtPosition(r11)     // Catch:{ all -> 0x012e }
-                    java.util.Map r3 = (java.util.Map) r3     // Catch:{ all -> 0x012e }
-                    java.lang.String r4 = "item_sel"
-                    r5 = 2131230922(0x7f0800ca, float:1.807791E38)
-                    java.lang.Integer r5 = java.lang.Integer.valueOf(r5)     // Catch:{ all -> 0x012e }
-                    r3.put(r4, r5)     // Catch:{ all -> 0x012e }
-                    com.droidlogic.mboxlauncher.CustomAppsActivity r3 = com.droidlogic.mboxlauncher.CustomAppsActivity.this     // Catch:{ all -> 0x012e }
-                    r3.updateView()     // Catch:{ all -> 0x012e }
-                    java.lang.String r3 = com.droidlogic.mboxlauncher.Launcher.current_shortcutHead     // Catch:{ all -> 0x012e }
-                    java.lang.String r4 = "Home_Shortcut:"
-                    boolean r3 = r3.equals(r4)     // Catch:{ all -> 0x012e }
-                    if (r3 == 0) goto L_0x00da
-                    com.droidlogic.mboxlauncher.CustomAppsActivity r3 = com.droidlogic.mboxlauncher.CustomAppsActivity.this     // Catch:{ all -> 0x012e }
-                    r3.homeShortcutCount = r3.homeShortcutCount + 1     // Catch:{ all -> 0x012e }
-                L_0x00da:
-                    goto L_0x012c
-                L_0x00db:
-                    java.lang.String r2 = "item_symbol"
-                    java.lang.Object r2 = r0.get(r2)     // Catch:{ all -> 0x012e }
-                    android.content.ComponentName r2 = (android.content.ComponentName) r2     // Catch:{ all -> 0x012e }
-                    java.lang.String r2 = r2.getPackageName()     // Catch:{ all -> 0x012e }
-                    com.droidlogic.mboxlauncher.CustomAppsActivity r4 = com.droidlogic.mboxlauncher.CustomAppsActivity.this     // Catch:{ all -> 0x012e }
-                    com.droidlogic.mboxlauncher.CustomAppsActivity r5 = com.droidlogic.mboxlauncher.CustomAppsActivity.this     // Catch:{ all -> 0x012e }
-                    java.lang.String r5 = r5.str_custom_apps     // Catch:{ all -> 0x012e }
-                    java.lang.StringBuilder r6 = new java.lang.StringBuilder     // Catch:{ all -> 0x012e }
-                    r6.<init>()     // Catch:{ all -> 0x012e }
-                    r6.append(r2)     // Catch:{ all -> 0x012e }
-                    java.lang.String r7 = ";"
-                    r6.append(r7)     // Catch:{ all -> 0x012e }
-                    java.lang.String r6 = r6.toString()     // Catch:{ all -> 0x012e }
-                    java.lang.String r7 = ""
-                    java.lang.String r5 = r5.replaceAll(r6, r7)     // Catch:{ all -> 0x012e }
-                    r4.str_custom_apps = r5     // Catch:{ all -> 0x012e }
-                    java.lang.Object r4 = r9.getItemAtPosition(r11)     // Catch:{ all -> 0x012e }
-                    java.util.Map r4 = (java.util.Map) r4     // Catch:{ all -> 0x012e }
-                    java.lang.String r5 = "item_sel"
-                    java.lang.Integer r3 = java.lang.Integer.valueOf(r3)     // Catch:{ all -> 0x012e }
-                    r4.put(r5, r3)     // Catch:{ all -> 0x012e }
-                    com.droidlogic.mboxlauncher.CustomAppsActivity r3 = com.droidlogic.mboxlauncher.CustomAppsActivity.this     // Catch:{ all -> 0x012e }
-                    r3.updateView()     // Catch:{ all -> 0x012e }
-                    java.lang.String r3 = com.droidlogic.mboxlauncher.Launcher.current_shortcutHead     // Catch:{ all -> 0x012e }
-                    java.lang.String r4 = "Home_Shortcut:"
-                    boolean r3 = r3.equals(r4)     // Catch:{ all -> 0x012e }
-                    if (r3 == 0) goto L_0x012c
-                    com.droidlogic.mboxlauncher.CustomAppsActivity r3 = com.droidlogic.mboxlauncher.CustomAppsActivity.this     // Catch:{ all -> 0x012e }
-                    r3.homeShortcutCount = r3.homeShortcutCount - 1     // Catch:{ all -> 0x012e }
-                L_0x012c:
-                    monitor-exit(r1)     // Catch:{ all -> 0x012e }
-                    return
-                L_0x012e:
-                    r2 = move-exception
-                    monitor-exit(r1)     // Catch:{ all -> 0x012e }
-                    throw r2
-                */
-                throw new UnsupportedOperationException("Method not decompiled: com.droidlogic.mboxlauncher.CustomAppsActivity.AnonymousClass1.onItemClick(android.widget.AdapterView, android.view.View, int, long):void");
+        gv.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
+                Map<String, Object> item = (Map<String, Object>)parent.getItemAtPosition(pos);
+
+                synchronized(mLock){
+
+                    Launcher.ifChangedShortcut = true;
+
+                    if (item.get("item_type").equals(R.drawable.item_img_exit)) {
+                        finish();
+                    } else if (item.get("item_sel").equals(R.drawable.item_img_unsel)) {
+                        if (Launcher.current_shortcutHead.equals(HOME_SHORTCUT_HEAD) && homeShortcutCount >= Launcher.HOME_SHORTCUT_COUNT) {
+                            Toast.makeText(mContext, mContext.getResources().getString(R.string.str_nospace),Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        String str_package_name = ((ComponentName)item.get("item_symbol")).getPackageName();
+                        if (str_custom_apps == null) {
+                            str_custom_apps = Launcher.current_shortcutHead + str_package_name + ";";
+                        } else {
+                            str_custom_apps += str_package_name  + ";";
+                        }
+                        ((Map<String, Object>)parent.getItemAtPosition(pos)).put("item_sel", R.drawable.item_img_sel);
+                        updateView();
+
+                        if (Launcher.current_shortcutHead.equals(HOME_SHORTCUT_HEAD))
+                            homeShortcutCount++;
+                    } else {
+                        String str_package_name = ((ComponentName)item.get("item_symbol")).getPackageName();
+                        str_custom_apps = str_custom_apps.replaceAll(str_package_name + ";", "");
+                        ((Map<String, Object>)parent.getItemAtPosition(pos)).put("item_sel", R.drawable.item_img_unsel);
+                        updateView();
+
+                        if (Launcher.current_shortcutHead.equals(HOME_SHORTCUT_HEAD))
+                            homeShortcutCount--;
+                    }
+                }
+
             }
         });
         this.mContext = this;
@@ -297,8 +211,8 @@ public class CustomAppsActivity extends Activity {
     /* access modifiers changed from: protected */
     public void onPause() {
         super.onPause();
-        Log.d("CustomAppsActivity", "------onPause");
-        saveShortcut("/data/data/com.droidlogic.mboxlauncher/shortcut.cfg", this.str_custom_apps);
+        Log.d("CustomAppsActivity", "------onPause"+str_custom_apps);
+        saveShortcut(SHORTCUT_PATH, str_custom_apps);
     }
 
     public void onStop() {
@@ -401,8 +315,9 @@ public class CustomAppsActivity extends Activity {
         mainIntent.addCategory("android.intent.category.LAUNCHER");
         List<ResolveInfo> apps = manager.queryIntentActivities(mainIntent, 0);
         Collections.sort(apps, new DisplayNameComparator(manager));
-        this.str_custom_apps = loadCustomApps("/data/data/com.droidlogic.mboxlauncher/shortcut.cfg", Launcher.current_shortcutHead);
+        this.str_custom_apps = loadCustomApps(CustomAppsActivity.SHORTCUT_PATH, Launcher.current_shortcutHead);
         this.list_custom_apps = this.str_custom_apps.split(";");
+        Log.e("dxsTest","this.str_custom_apps:"+this.str_custom_apps);
         if (this.list_custom_apps != null) {
             int i = 0;
             while (i < this.list_custom_apps.length) {
@@ -445,9 +360,12 @@ public class CustomAppsActivity extends Activity {
                 hashMap2.put("item_sel", Integer.valueOf(R.drawable.item_img_unsel));
                 hashMap2.put("item_bg", Integer.valueOf(parseItemBackground(i2)));
                 hashMap2.put("item_symbol", application.componentName);
+                Log.e("dxsTest","this.list_custom_apps[j2]:"+this.list_custom_apps);
                 if (this.list_custom_apps != null) {
                     int j2 = 0;
                     while (true) {
+                        Log.e("dxsTest","application.componentName:"+application.componentName.getPackageName());
+
                         if (j2 >= this.list_custom_apps.length) {
                             break;
                         } else if (application.componentName.getPackageName().equals(this.list_custom_apps[j2])) {
@@ -506,118 +424,11 @@ public class CustomAppsActivity extends Activity {
 
     // TODO: 19-11-30 返回自定义APPs 
     private String loadCustomApps(String path, String shortcut_head) {
-        String str;
-        this.mFile = new File(path);
-        if (!this.mFile.exists()) {
-            return null;
-        }
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(this.mFile));
-            do {
-                String readLine = br.readLine();
-                str = readLine;
-                if (readLine == null) {
-                    break;
-                }
-            } while (!str.startsWith(shortcut_head));
-            this.str_custom_apps = str.replaceAll(shortcut_head, "");
-            try {
-                br.close();
-            } catch (IOException e) {
-            }
-            return this.str_custom_apps;
-        } catch (Exception e2) {
-
-        } finally {
-            return null;
-        }
+        return SPUtils.getInstance().getString(Launcher.current_shortcutHead,"");
     }
 
     public void saveShortcut(String path, String str_apps) {
-        this.mFile = new File(path);
-        if (!this.mFile.exists()) {
-            try {
-                this.mFile.createNewFile();
-            } catch (Exception e) {
-                Log.e("CustomAppsActivity", e.getMessage().toString());
-            }
-        }
-        BufferedReader br = null;
-        BufferedWriter bw = null;
-        try {
-            BufferedReader br2 = new BufferedReader(new FileReader(this.mFile));
-            List list = new ArrayList();
-            while (true) {
-                String readLine = br2.readLine();
-                String str = readLine;
-                if (readLine == null) {
-                    break;
-                }
-                list.add(str);
-            }
-            if (list.size() == 0) {
-                list.add("Home_Shortcut:");
-                list.add("Video_Shortcut:");
-                list.add("Recommend_Shortcut:");
-                list.add("Music_shortcut:");
-                list.add("Local_Shortcut:");
-            }
-            BufferedWriter bw2 = new BufferedWriter(new FileWriter(this.mFile));
-            for (int i = 0; i < list.size(); i++) {
-                if (list.get(i).toString().startsWith(Launcher.current_shortcutHead)) {
-                    StringBuilder sb = new StringBuilder();
-                    sb.append(Launcher.current_shortcutHead);
-                    sb.append(str_apps);
-                    str_apps = sb.toString();
-                    bw2.write(str_apps);
-                } else {
-                    bw2.write(list.get(i).toString());
-                }
-                bw2.newLine();
-            }
-            bw2.flush();
-            bw2.close();
-            try {
-                br2.close();
-            } catch (IOException e2) {
-            }
-            try {
-                bw2.close();
-            } catch (IOException e3) {
-            }
-        } catch (Exception e4) {
-            String str2 = "CustomAppsActivity";
-            StringBuilder sb2 = new StringBuilder();
-            sb2.append("   ");
-            sb2.append(e4);
-            Log.d(str2, sb2.toString());
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e5) {
-                }
-            }
-            if (bw != null) {
-                try {
-                    bw.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (Throwable th) {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e6) {
-                }
-            }
-            if (bw != null) {
-                try {
-                    bw.close();
-                } catch (IOException e7) {
-                }
-            }
-            throw th;
-        }
+        //采用SP
+        SPUtils.getInstance().put(Launcher.current_shortcutHead,str_apps);
     }
 }

@@ -17,7 +17,6 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_margin="3dp"
-        android:visibility="gone"
         android:src="@drawable/img_status_sdcard1" />
 
     <ImageView

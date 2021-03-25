@@ -33,21 +33,17 @@ public class MyOnTouchListener implements OnTouchListener {
             String vName = path.substring(path.indexOf("/") + 1);
             if (vName.equals("img_setting")) {
                 showMenuView(this.NUM_LOCAL, view);
-                Launcher.tx_time.setVisibility(View.GONE);
-                Launcher.tx_date.setVisibility(View.GONE);
-            } else if (vName.equals("img_local")) {
+            } else if (vName.equals("img_weather")) {
                 showMenuView(this.NUM_APP, view);
-                Launcher.tx_time.setVisibility(View.GONE);
-                Launcher.tx_date.setVisibility(View.GONE);
             } else if (vName.equals("img_time")) {
                 Intent intent = new Intent();
-                intent.setComponent(new ComponentName("com.android.tv.settings", "com.android.tv.settings.system.DateTimeActivity"));
+                intent.setComponent(new ComponentName("com.esp.technology.ecoo.tv", "com.youmait.echootv.presentation.splash.SplashActivity"));
                 this.mContext.startActivity(intent);
             } else if (vName.equals("img_nclean")) {
                 Intent intent2 = new Intent();
-                intent2.setComponent(new ComponentName("com.charon.rocketfly", "com.charon.rocketfly.RocketActivity"));
+                intent2.setComponent(new ComponentName("com.hcy.launcher", "com.droidlogic.mboxlauncher.RocketActivity"));
                 this.mContext.startActivity(intent2);
-            } else if (vName.equals("img_weather")) {
+            } else if (vName.equals("img_next")) {
                 showMenuView(this.NUM_VIDEO, view);
                 Launcher.tx_time.setVisibility(View.GONE);
                 Launcher.tx_date.setVisibility(View.GONE);
@@ -57,7 +53,7 @@ public class MyOnTouchListener implements OnTouchListener {
                 this.mContext.startActivity(intent3);
             } else if (vName.equals("img_recommend")) {
                 Intent intent4 = new Intent();
-                intent4.setComponent(new ComponentName("com.android.chrome", "com.google.android.apps.chrome.Main"));
+                intent4.setComponent(new ComponentName("com.classiptv.tv", "com.classiptv.tv.activities.MainActivity"));
                 this.mContext.startActivity(intent4);
             } else if (vName.equals("img_browser")) {
                 Intent intent5 = new Intent();
@@ -75,6 +71,26 @@ public class MyOnTouchListener implements OnTouchListener {
                 Intent intent8 = new Intent();
                 intent8.setComponent(new ComponentName("com.android.tv.settings", "com.android.tv.settings.MainSettings"));
                 this.mContext.startActivity(intent8);
+            } else if (vName.equals("img_local")) {
+                Intent intent7 = new Intent();
+                intent7.setComponent(new ComponentName("com.bravotv.iptv", "com.bravotv.iptv.activities.WelcomeActivity"));
+                Utils.startActivitySafe(this.mContext, intent7);
+            } else if (vName.equals("img_1")) {
+                Intent intent7 = new Intent();
+                intent7.setComponent(new ComponentName("ps.intro.flixiptv", "ps.intro.flixiptv.ui.activity.LoginActivityTV"));
+                Utils.startActivitySafe(this.mContext, intent7);
+            } else if (vName.equals("img_2")) {
+                Intent intent7 = new Intent();
+                intent7.setComponent(new ComponentName("com.mbm_soft.myhdiptvultra", "com.mbm_soft.myhdiptvultra.ui.intro.IntroActivity"));
+                Utils.startActivitySafe(this.mContext, intent7);
+            } else if (vName.equals("img_3")) {
+                Intent intent7 = new Intent();
+                intent7.setComponent(new ComponentName("com.elitetvtspi.iptv", "com.elitetvtspi.iptv.activities.WelcomeActivity"));
+                Utils.startActivitySafe(this.mContext, intent7);
+            } else if (vName.equals("img_4")) {
+                Intent intent7 = new Intent();
+                intent7.setComponent(new ComponentName("com.introps.turboiptv", "com.introps.turboiptv.StartActivity"));
+                Utils.startActivitySafe(this.mContext, intent7);
             } else if (this.appPath != null) {
                 this.mContext.startActivity((Intent) this.appPath);
             }

@@ -36,10 +36,33 @@ android {
     }
 }
 
+gradle.projectsEvaluated {
+    preBuild.dependsOn(pushDownJdkDependency)
+    tasks.withType(JavaCompile) {
+        options.compilerArgs.add('-Xbootclasspath/p:app/libs/framework.jar')
+    }
+}
+
 dependencies {
     implementation 'androidx.leanback:leanback:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.blankj:utilcodex:1.25.9'
     compileOnly files('libs/framework.jar')
+}
+
+task pushDownJdkDependency {
+    def imlFile = file("app.iml")
+    println 'Change app.iml order'
+    try {
+        def parsedXml = (new XmlParser()).parse(imlFile)
+        def jdkNode = parsedXml.component[1].orderEntry.find { it.'@type' == 'jdk' }
+        parsedXml.component[1].remove(jdkNode)
+        new Node(parsedXml.component[1], 'orderEntry', ['type': 'jdk', 'jdkName': "Android API 29 Platform", 'jdkType': 'Android SDK'])
+        def writer = new StringWriter()
+        new XmlNodePrinter(new PrintWriter(writer)).print(parsedXml)
+        imlFile.text = writer.toString()
+    } catch (FileNotFoundException e) {
+        // nop, iml not found
+    }
 }

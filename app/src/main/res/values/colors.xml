@@ -5,4 +5,5 @@
     <color name="btn_text_color">#ffffffff</color>
     <color name="colorNormalWhite">#ffffffff</color>
     <color name="transparent_background">#00000000</color>
+    <color name="add_color">#00E001</color>
 </resources>

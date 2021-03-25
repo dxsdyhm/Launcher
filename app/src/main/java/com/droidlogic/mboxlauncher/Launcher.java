@@ -41,6 +41,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.FileIOUtils;
+import com.blankj.utilcode.util.FileUtils;
+import com.blankj.utilcode.util.SPUtils;
 import com.hcy.launcher.R;
 
 import java.io.BufferedReader;
@@ -51,6 +54,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.Collator;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
@@ -109,6 +113,7 @@ public class Launcher extends Activity {
     private final String SDCARD_FILE_NAME = "external_sd";
     private final String STORAGE_PATH = "/mnt";
     private final String STORAGE_PATH_usb = "/mnt/usb_storage";
+    private final String SP_FIRST_DEFAULT="SP_FIRST_DEFAULT";
     private BroadcastReceiver appReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
@@ -351,10 +356,12 @@ public class Launcher extends Activity {
             updateAllShortcut = true;
             MyRelativeLayout videoView = (MyRelativeLayout) findViewById(R.id.layout_video);
             dontRunAnim = true;
-            videoView.requestFocus();
-            videoView.setSurface();
-            tx_time.setVisibility(View.VISIBLE);
-            tx_date.setVisibility(View.VISIBLE);
+            if (videoView != null) {
+                videoView.requestFocus();
+                videoView.setSurface();
+            }
+//            tx_time.setVisibility(View.VISIBLE);
+//            tx_date.setVisibility(View.VISIBLE);
         }
     }
 
@@ -419,8 +426,8 @@ public class Launcher extends Activity {
                 viewHomePage.setVisibility(View.VISIBLE);
                 isShowHomePage = true;
                 IntoCustomActivity = false;
-                tx_time.setVisibility(View.VISIBLE);
-                tx_date.setVisibility(View.VISIBLE);
+//                tx_time.setVisibility(View.VISIBLE);
+//                tx_date.setVisibility(View.VISIBLE);
                 if (saveHomeFocusView != null && !isInTouchMode) {
                     prevFocusedView = null;
                     dontRunAnim = true;
@@ -472,12 +479,12 @@ public class Launcher extends Activity {
 
     /* access modifiers changed from: private */
     public void displayDate() {
-        this.is24hFormart = DateFormat.is24HourFormat(this);
-        TextView time = (TextView) findViewById(R.id.tx_time);
-        TextView date = (TextView) findViewById(R.id.tx_date);
-        time.setText(getTime());
-        time.setTypeface(Typeface.DEFAULT_BOLD);
-        date.setText(getDate());
+//        this.is24hFormart = DateFormat.is24HourFormat(this);
+//        TextView time = (TextView) findViewById(R.id.tx_time);
+//        TextView date = (TextView) findViewById(R.id.tx_date);
+//        time.setText(getTime());
+//        time.setTypeface(Typeface.DEFAULT_BOLD);
+//        date.setText(getDate());
     }
 
     private void initStaticVariable() {
@@ -523,59 +530,54 @@ public class Launcher extends Activity {
         this.tx_music_allcount = (TextView) findViewById(R.id.tx_music_allcount);
         tx_local_count = (TextView) findViewById(R.id.tx_local_count);
         this.tx_local_allcount = (TextView) findViewById(R.id.tx_local_allcount);
-        tx_time = (TextView) findViewById(R.id.tx_time);
-        tx_date = (TextView) findViewById(R.id.tx_date);
+//        tx_time = (TextView) findViewById(R.id.tx_time);
+//        tx_date = (TextView) findViewById(R.id.tx_date);
     }
 
     /* access modifiers changed from: private */
     public void displayShortcuts() {
+        Log.d("mylog", "ifChangedShortcut" + ifChangedShortcut);
         if (ifChangedShortcut) {
-            StringBuilder sb = new StringBuilder();
-            sb.append("===============================");
-            sb.append(bootisFirstRunkodi);
-            Log.d("mylog", sb.toString());
+            Log.d("mylog", "====" + bootisFirstRunkodi + "  isShowHomePage:" + isShowHomePage + "  numberInGridOfShortcut:" + numberInGridOfShortcut + "  numberInGrid:" + numberInGrid + "IntoCustomActivity:" + IntoCustomActivity);
             loadApplications();
             ifChangedShortcut = false;
+
             if (!isShowHomePage) {
-                if (this.numberInGrid == -1) {
+                if (numberInGrid == -1) {
                     new Thread(new Runnable() {
                         public void run() {
-                            for (ViewGroup findGridLayout = null; findGridLayout == null; findGridLayout = (ViewGroup) ((ViewGroup) ((ViewGroup) Launcher.viewMenu.getCurrentView()).getChildAt(4)).getChildAt(0)) {
+                            ViewGroup findGridLayout = null;
+                            while (findGridLayout == null) {
+                                findGridLayout = ((ViewGroup) ((ViewGroup) ((ViewGroup) viewMenu.getCurrentView())
+                                        .getChildAt(4)).getChildAt(0));
                             }
-                            Launcher.this.mHandler.sendEmptyMessage(3);
+                            mHandler.sendEmptyMessage(3);
                         }
                     }).start();
                 } else {
                     new Thread(new Runnable() {
+
                         public void run() {
-                            for (ViewGroup findGridLayout = null; findGridLayout == null; findGridLayout = (ViewGroup) ((ViewGroup) ((ViewGroup) Launcher.viewMenu.getCurrentView()).getChildAt(4)).getChildAt(0)) {
+                            ViewGroup findGridLayout = null;
+                            while (findGridLayout == null) {
+                                findGridLayout = ((ViewGroup) ((ViewGroup) ((ViewGroup) viewMenu.getCurrentView())
+                                        .getChildAt(4)).getChildAt(0));
                             }
-                            Launcher.this.mHandler.sendEmptyMessage(4);
+                            mHandler.sendEmptyMessage(4);
                         }
                     }).start();
                 }
-            } else if (this.numberInGridOfShortcut != -1) {
+            } else if (numberInGridOfShortcut != -1) {
                 new Thread(new Runnable() {
                     public void run() {
-                        do {
-                        } while (Launcher.homeShortcutView.getChildAt(Launcher.this.numberInGridOfShortcut) == null);
-                        Launcher.this.mHandler.sendEmptyMessage(5);
-                    }
-                }).start();
-            } else if (IntoCustomActivity) {
-                new Thread(new Runnable() {
-                    public void run() {
-                        try {
-                            Thread.sleep(200);
-                        } catch (Exception e) {
-                            StringBuilder sb = new StringBuilder();
-                            sb.append("");
-                            sb.append(e);
-                            Log.d("MediaBoxLauncher", sb.toString());
+                        while (homeShortcutView.getChildAt(numberInGridOfShortcut) == null) {
                         }
-                        Launcher.this.mHandler.sendEmptyMessage(6);
+                        mHandler.sendEmptyMessage(5);
                     }
                 }).start();
+
+            } else if (IntoCustomActivity) {
+                mHandler.sendEmptyMessageDelayed(6, 200);
             }
         }
     }
@@ -648,172 +650,76 @@ public class Launcher extends Activity {
     }
 
     private void loadCustomApps(String path) {
-        File mFile = new File(path);
-        File default_file = new File("/system/etc/default_shortcut.cfg");
-        if (!mFile.exists()) {
-            mFile = default_file;
-            getShortcutFromDefault("/system/etc/default_shortcut.cfg", "/data/data/com.droidlogic.mboxlauncher/shortcut.cfg");
-        } else {
-            try {
-                BufferedReader b = new BufferedReader(new FileReader(mFile));
-                if (b.read() == -1) {
-                    getShortcutFromDefault("/system/etc/default_shortcut.cfg", "/data/data/com.droidlogic.mboxlauncher/shortcut.cfg");
-                }
-                b.close();
-            } catch (IOException e) {
-            }
-        }
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(mFile));
-            while (true) {
-                String readLine = br.readLine();
-                String str = readLine;
-                if (readLine == null) {
-                    try {
-                        br.close();
-                        return;
-                    } catch (IOException e2) {
-                        return;
-                    }
-                } else if (str.startsWith("Home_Shortcut:")) {
-                    this.list_homeShortcut = str.replaceAll("Home_Shortcut:", "").split(";");
-                } else if (str.startsWith("Video_Shortcut:")) {
-                    this.list_videoShortcut = str.replaceAll("Video_Shortcut:", "").split(";");
-                } else if (str.startsWith("Recommend_Shortcut:")) {
-                    this.list_recommendShortcut = str.replaceAll("Recommend_Shortcut:", "").split(";");
-                } else if (str.startsWith("Music_shortcut:")) {
-                    this.list_musicShortcut = str.replaceAll("Music_shortcut:", "").split(";");
-                } else if (str.startsWith("Local_Shortcut:")) {
-                    this.list_localShortcut = str.replaceAll("Local_Shortcut:", "").split(";");
-                }
-            }
-        } catch (Exception e3) {
-            String str2 = "MediaBoxLauncher";
-            StringBuilder sb = new StringBuilder();
-            sb.append("");
-            sb.append(e3);
-            Log.d(str2, sb.toString());
+        getShortcutFromDefault(CustomAppsActivity.DEFAULT_SHORTCUR_PATH, CustomAppsActivity.SHORTCUT_PATH);
 
-        } finally {
-
-        }
+        this.list_homeShortcut = SPUtils.getInstance().getString(CustomAppsActivity.HOME_SHORTCUT_HEAD, "").split(";");
+        this.list_videoShortcut = SPUtils.getInstance().getString(CustomAppsActivity.VIDEO_SHORTCUT_HEAD, "").split(";");
+        this.list_recommendShortcut = SPUtils.getInstance().getString(CustomAppsActivity.RECOMMEND_SHORTCUT_HEAD, "").split(";");
+        this.list_musicShortcut = SPUtils.getInstance().getString(CustomAppsActivity.MUSIC_SHORTCUT_HEAD, "").split(";");
+        this.list_localShortcut = SPUtils.getInstance().getString(CustomAppsActivity.LOCAL_SHORTCUT_HEAD, "").split(";");
     }
 
     public void getShortcutFromDefault(String srcPath, String desPath) {
-        File srcFile = new File(srcPath);
-        File desFile = new File(desPath);
-        if (srcFile.exists()) {
-            if (!desFile.exists()) {
-                try {
-                    desFile.createNewFile();
-                } catch (Exception e) {
-                    Log.e("MediaBoxLauncher", e.getMessage().toString());
+        boolean first=SPUtils.getInstance().getBoolean(SP_FIRST_DEFAULT,true);
+        if(!first){
+            return;
+        }
+        boolean hasDefault = FileUtils.isFileExists(srcPath);
+        if (hasDefault) {
+            List<String> cuts = FileIOUtils.readFile2List(srcPath);
+            for(String cut:cuts){
+                if(cut.startsWith(CustomAppsActivity.HOME_SHORTCUT_HEAD)){
+                    SPUtils.getInstance().put(CustomAppsActivity.HOME_SHORTCUT_HEAD,cut.replace(CustomAppsActivity.HOME_SHORTCUT_HEAD,""));
                 }
-            }
-            BufferedReader br = null;
-            BufferedWriter bw = null;
-            try {
-                BufferedReader br2 = new BufferedReader(new FileReader(srcFile));
-                List list = new ArrayList();
-                while (true) {
-                    String readLine = br2.readLine();
-                    String str = readLine;
-                    if (readLine == null) {
-                        break;
-                    }
-                    list.add(str);
+                if(cut.startsWith(CustomAppsActivity.VIDEO_SHORTCUT_HEAD)){
+                    SPUtils.getInstance().put(CustomAppsActivity.VIDEO_SHORTCUT_HEAD,cut.replace(CustomAppsActivity.VIDEO_SHORTCUT_HEAD,""));
                 }
-                BufferedWriter bw2 = new BufferedWriter(new FileWriter(desFile));
-                for (int i = 0; i < list.size(); i++) {
-                    bw2.write(list.get(i).toString());
-                    bw2.newLine();
+                if(cut.startsWith(CustomAppsActivity.RECOMMEND_SHORTCUT_HEAD)){
+                    SPUtils.getInstance().put(CustomAppsActivity.RECOMMEND_SHORTCUT_HEAD,cut.replace(CustomAppsActivity.RECOMMEND_SHORTCUT_HEAD,""));
                 }
-                bw2.flush();
-                bw2.close();
-                try {
-                    br2.close();
-                } catch (IOException e2) {
+                if(cut.startsWith(CustomAppsActivity.MUSIC_SHORTCUT_HEAD)){
+                    SPUtils.getInstance().put(CustomAppsActivity.MUSIC_SHORTCUT_HEAD,cut.replace(CustomAppsActivity.MUSIC_SHORTCUT_HEAD,""));
                 }
-                try {
-                    bw2.close();
-                } catch (IOException e3) {
+                if(cut.startsWith(CustomAppsActivity.LOCAL_SHORTCUT_HEAD)){
+                    SPUtils.getInstance().put(CustomAppsActivity.LOCAL_SHORTCUT_HEAD,cut.replace(CustomAppsActivity.LOCAL_SHORTCUT_HEAD,""));
                 }
-            } catch (Exception e4) {
-                String str2 = "MediaBoxLauncher";
-                StringBuilder sb = new StringBuilder();
-                sb.append("   ");
-                sb.append(e4);
-                Log.d(str2, sb.toString());
-                if (br != null) {
-                    try {
-                        br.close();
-                    } catch (IOException e5) {
-                    }
-                }
-                if (bw != null) {
-                    try {
-                        bw.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            } catch (Throwable th) {
-                if (br != null) {
-                    try {
-                        br.close();
-                    } catch (IOException e6) {
-                    }
-                }
-                if (bw != null) {
-                    try {
-                        bw.close();
-                    } catch (IOException e7) {
-                    }
-                }
-                throw th;
             }
         }
+        SPUtils.getInstance().put(SP_FIRST_DEFAULT,false);
     }
 
     private List<Map<String, Object>> loadShortcutList(PackageManager manager, List<LauncherActivityInfo> apps, String[] list_custom_apps) {
-        ApplicationInfo application = new ApplicationInfo();
+        Map<String, Object> map = null;
         List<Map<String, Object>> list = new ArrayList<>();
         int iconDpi = ((ActivityManager) getSystemService(Context.ACTIVITY_SERVICE)).getLauncherLargeIconDensity();
         if (list_custom_apps != null) {
-            Map map = null;
             for (int i = 0; i < list_custom_apps.length; i++) {
                 if (apps != null) {
-                    int count = apps.size();
-                    int j = 0;
-                    while (true) {
-                        if (j >= count) {
-                            break;
-                        }
-                        LauncherActivityInfo info = (LauncherActivityInfo) apps.get(j);
+                    final int count = apps.size();
+                    for (int j = 0; j < count; j++) {
+                        ApplicationInfo application = new ApplicationInfo();
+                        LauncherActivityInfo info = apps.get(j);
+
                         application.title = info.getLabel().toString();
-                        application.setActivity(info.getComponentName(), 270532608);
+                        application.setActivity(info.getComponentName(),
+                                Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
                         application.icon = info.getBadgedIcon(iconDpi);
-                        if (!info.getComponentName().getPackageName().equals(list_custom_apps[i])) {
-                            application.icon.setCallback(null);
-                        } else if (!info.getComponentName().getPackageName().equals("com.android.gallery3d") || !application.intent.toString().contains("camera")) {
-                            map = new HashMap();
+                        if (info.getComponentName().getPackageName().equals(list_custom_apps[i])) {
+                            if (info.getComponentName().getPackageName().equals("com.android.gallery3d")
+                                    && application.intent.toString().contains("camera"))
+                                continue;
+                            map = new HashMap<String, Object>();
                             map.put("item_name", application.title.toString());
                             map.put("file_path", application.intent);
                             map.put("item_type", application.icon);
                             map.put("item_symbol", application.componentName);
                             list.add(map);
+                            break;
                         }
-                        j++;
+                        application.icon.setCallback(null);
                     }
-                    map = new HashMap();
-                    map.put("item_name", application.title.toString());
-                    map.put("file_path", application.intent);
-                    map.put("item_type", application.icon);
-                    map.put("item_symbol", application.componentName);
-                    list.add(map);
                 }
             }
-            Map map2 = map;
         }
         return list;
     }
@@ -855,7 +761,7 @@ public class Launcher extends Activity {
         LauncherApps launcherApps = (LauncherApps) getSystemService(Context.LAUNCHER_APPS_SERVICE);
         List<LauncherActivityInfo> apps = launcherApps.getActivityList(null, Process.myUserHandle());
         Collections.sort(apps, getAppNameComparator());
-        loadCustomApps("/data/data/com.droidlogic.mboxlauncher/shortcut.cfg");
+        loadCustomApps(CustomAppsActivity.SHORTCUT_PATH);
         if (updateAllShortcut) {
             HomeShortCutList = loadShortcutList(manager, apps, this.list_homeShortcut);
             videoShortCutList = loadShortcutList(manager, apps, this.list_videoShortcut);
@@ -985,22 +891,33 @@ public class Launcher extends Activity {
     }
 
     private void setRectOnKeyListener() {
-        findViewById(R.id.layout_video).setOnKeyListener(new MyOnKeyListener(this, null));
-        findViewById(R.id.layout_app).setOnKeyListener(new MyOnKeyListener(this, null));
+        //findViewById(R.id.layout_video).setOnKeyListener(new MyOnKeyListener(this, null));
+        //findViewById(R.id.layout_app).setOnKeyListener(new MyOnKeyListener(this, null));
         findViewById(R.id.layout_recommend).setOnKeyListener(new MyOnKeyListener(this, null));
         findViewById(R.id.layout_local).setOnKeyListener(new MyOnKeyListener(this, null));
         findViewById(R.id.layout_clean).setOnKeyListener(new MyOnKeyListener(this, null));
         findViewById(R.id.layout_time).setOnKeyListener(new MyOnKeyListener(this, null));
         findViewById(R.id.layout_nclean).setOnKeyListener(new MyOnKeyListener(this, null));
         findViewById(R.id.layout_weather).setOnKeyListener(new MyOnKeyListener(this, null));
-        findViewById(R.id.layout_video).setOnTouchListener(new MyOnTouchListener(this, null));
-        findViewById(R.id.layout_app).setOnTouchListener(new MyOnTouchListener(this, null));
+        //findViewById(R.id.layout_video).setOnTouchListener(new MyOnTouchListener(this, null));
+        //findViewById(R.id.layout_app).setOnTouchListener(new MyOnTouchListener(this, null));
         findViewById(R.id.layout_recommend).setOnTouchListener(new MyOnTouchListener(this, null));
         findViewById(R.id.layout_local).setOnTouchListener(new MyOnTouchListener(this, null));
         findViewById(R.id.layout_clean).setOnTouchListener(new MyOnTouchListener(this, null));
         findViewById(R.id.layout_time).setOnTouchListener(new MyOnTouchListener(this, null));
         findViewById(R.id.layout_nclean).setOnTouchListener(new MyOnTouchListener(this, null));
         findViewById(R.id.layout_weather).setOnTouchListener(new MyOnTouchListener(this, null));
+
+        findViewById(R.id.layout_1).setOnTouchListener(new MyOnTouchListener(this, null));
+        findViewById(R.id.layout_2).setOnTouchListener(new MyOnTouchListener(this, null));
+        findViewById(R.id.layout_3).setOnTouchListener(new MyOnTouchListener(this, null));
+        findViewById(R.id.layout_4).setOnTouchListener(new MyOnTouchListener(this, null));
+
+        findViewById(R.id.layout_1).setOnKeyListener(new MyOnKeyListener(this, null));
+        findViewById(R.id.layout_2).setOnKeyListener(new MyOnKeyListener(this, null));
+        findViewById(R.id.layout_3).setOnKeyListener(new MyOnKeyListener(this, null));
+        findViewById(R.id.layout_4).setOnKeyListener(new MyOnKeyListener(this, null));
+
     }
 
     /* access modifiers changed from: private */
@@ -1073,6 +990,20 @@ public class Launcher extends Activity {
         }
         if (packageName.equals("com.android.camera2")) {
             return R.drawable.icon_camera;
+        }
+        if(packageName.equals("com.android.chrome")){
+            return R.drawable.ic_chrome;
+        }
+        if(packageName.equals("com.google.android.youtube.tv")){
+            return R.drawable.ic_youtube;
+        }if(packageName.equals("com.android.vending")){
+            return R.drawable.ic_store;
+        }
+        if(packageName.equals("com.facebook.katana")){
+            return R.drawable.ic_facebook;
+        }
+        if(packageName.equals("com.netflix.mediaclient")){
+            return R.drawable.ic_netflix;
         }
         return -1;
     }

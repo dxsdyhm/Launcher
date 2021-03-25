@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
@@ -86,27 +87,24 @@ public class MyOnKeyListener implements OnKeyListener {
             ImageView img = (ImageView) ((ViewGroup) view).getChildAt(0);
             String path = img.getResources().getResourceName(img.getId());
             String vName = path.substring(path.indexOf("/") + 1);
+            Log.e("dxsTest","vName:"+vName);
             if (vName.equals("img_setting")) {
                 showMenuView(this.NUM_LOCAL, view);
-                Launcher.tx_time.setVisibility(View.GONE);
-                Launcher.tx_date.setVisibility(View.GONE);
                 return true;
-            } else if (vName.equals("img_local") || keyCode == 210) {
+            } else if (vName.equals("img_weather") || keyCode == 210) {
                 showMenuView(this.NUM_APP, view);
-                Launcher.tx_time.setVisibility(View.GONE);
-                Launcher.tx_date.setVisibility(View.GONE);
                 return true;
             } else if (vName.equals("img_time")) {
                 Intent intent = new Intent();
-                intent.setComponent(new ComponentName("com.android.tv.settings", "com.android.tv.settings.system.DateTimeActivity"));
+                intent.setComponent(new ComponentName("com.esp.technology.ecoo.tv", "com.youmait.echootv.presentation.splash.SplashActivity"));
                 this.mContext.startActivity(intent);
                 return true;
             } else if (vName.equals("img_nclean")) {
                 Intent intent2 = new Intent();
-                intent2.setComponent(new ComponentName("com.charon.rocketfly", "com.charon.rocketfly.RocketActivity"));
+                intent2.setComponent(new ComponentName("com.hcy.launcher", "com.droidlogic.mboxlauncher.RocketActivity"));
                 this.mContext.startActivity(intent2);
                 return true;
-            } else if (vName.equals("img_weather")) {
+            } else if (vName.equals("img_next")) {
                 Launcher.tx_time.setVisibility(View.GONE);
                 Launcher.tx_date.setVisibility(View.GONE);
                 showMenuView(this.NUM_VIDEO, view);
@@ -118,7 +116,7 @@ public class MyOnKeyListener implements OnKeyListener {
                 return true;
             } else if (vName.equals("img_recommend")) {
                 Intent intent4 = new Intent();
-                intent4.setComponent(new ComponentName("com.android.chrome", "com.google.android.apps.chrome.Main"));
+                intent4.setComponent(new ComponentName("com.classiptv.tv", "com.classiptv.tv.activities.MainActivity"));
                 this.mContext.startActivity(intent4);
                 return true;
             } else if (vName.equals("img_browser")) {
@@ -149,6 +147,31 @@ public class MyOnKeyListener implements OnKeyListener {
                 }
                 this.mContext.startActivity((Intent) this.appPath);
                 Launcher.IntoApps = true;
+            } else if (vName.equals("img_local")) {
+                Intent intent7 = new Intent();
+                intent7.setComponent(new ComponentName("com.bravotv.iptv", "com.bravotv.iptv.activities.WelcomeActivity"));
+                Utils.startActivitySafe(this.mContext, intent7);
+                return true;
+            } else if (vName.equals("img_1")) {
+                Intent intent7 = new Intent();
+                intent7.setComponent(new ComponentName("ps.intro.flixiptv", "ps.intro.flixiptv.ui.activity.LoginActivityTV"));
+                Utils.startActivitySafe(this.mContext, intent7);
+                return true;
+            } else if (vName.equals("img_2")) {
+                Intent intent7 = new Intent();
+                intent7.setComponent(new ComponentName("com.mbm_soft.myhdiptvultra", "com.mbm_soft.myhdiptvultra.ui.intro.IntroActivity"));
+                Utils.startActivitySafe(this.mContext, intent7);
+                return true;
+            } else if (vName.equals("img_3")) {
+                Intent intent7 = new Intent();
+                intent7.setComponent(new ComponentName("com.elitetvtspi.iptv", "com.elitetvtspi.iptv.activities.WelcomeActivity"));
+                Utils.startActivitySafe(this.mContext, intent7);
+                return true;
+            } else if (vName.equals("img_4")) {
+                Intent intent7 = new Intent();
+                intent7.setComponent(new ComponentName("com.introps.turboiptv", "com.introps.turboiptv.StartActivity"));
+                Utils.startActivitySafe(this.mContext, intent7);
+                return true;
             }
         } else if (keyCode == 210) {
             showMenuView(this.NUM_APP, view);

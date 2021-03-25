@@ -206,16 +206,16 @@ public class StatusBar extends RelativeLayout {
 
     // TODO: 19-11-30 listen usb state
     public void storageYN(Context context) {
-//        StorageManager storageManagerService= (StorageManager) this.mContext.getSystemService(Context.STORAGE_SERVICE);
-//        for (VolumeInfo vol : storageManagerService.getVolumes()) {
-//            if (vol.getDisk() == null || !vol.getDisk().isUsb()) {
-//                this.vUsb.setImageResource(R.drawable.img_status_usb1);
-//            } else {
-//                this.vUsb.setImageResource(R.drawable.img_status_usb);
-//            }
-//            if (vol.getDisk() != null && vol.getDisk().isSd()) {
-//                VolumeInfo sdcardVolume = vol;
-//            }
-//        }
+        StorageManager storageManagerService= (StorageManager) this.mContext.getSystemService(Context.STORAGE_SERVICE);
+        for (VolumeInfo vol : storageManagerService.getVolumes()) {
+            if (vol.getDisk() == null || !vol.getDisk().isUsb()) {
+                this.vUsb.setImageResource(R.drawable.img_status_usb1);
+            } else {
+                this.vUsb.setImageResource(R.drawable.img_status_usb);
+            }
+            if (vol.getDisk() != null && vol.getDisk().isSd()) {
+                VolumeInfo sdcardVolume = vol;
+            }
+        }
     }
 }

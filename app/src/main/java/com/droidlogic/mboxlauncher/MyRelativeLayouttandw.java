@@ -286,6 +286,18 @@ public class MyRelativeLayouttandw extends RelativeLayout {
         if (vName.equals("img_time")) {
             return R.drawable.img_time1;
         }
+        if (vName.equals("img_1")) {
+            return R.drawable.flix1;
+        }
+        if (vName.equals("img_3")) {
+            return R.drawable.elite1;
+        }
+        if (vName.equals("img_2")) {
+            return R.drawable.myhd1;
+        }
+        if (vName.equals("img_4")) {
+            return R.drawable.turbo1;
+        }
         return -1;
     }
 
@@ -321,6 +333,18 @@ public class MyRelativeLayouttandw extends RelativeLayout {
         }
         if (vName.equals("img_time")) {
             return R.drawable.img_time1;
+        }
+        if (vName.equals("img_1")) {
+            return R.drawable.flix1;
+        }
+        if (vName.equals("img_3")) {
+            return R.drawable.elite1;
+        }
+        if (vName.equals("img_2")) {
+            return R.drawable.myhd1;
+        }
+        if (vName.equals("img_4")) {
+            return R.drawable.turbo1;
         }
         if (mode == 2) {
             return R.drawable.shadow_child_shortcut;
