@@ -1,5 +1,6 @@
 package com.droidlogic.Weather;
 
+import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;

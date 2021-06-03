@@ -125,6 +125,7 @@ public class StatusBar extends RelativeLayout {
         this.vEthernet = (ImageView) this.mStatusBarContainer.findViewById(R.id.status_ethernet);
         this.vWifi = (ImageView) this.mStatusBarContainer.findViewById(R.id.status_wifi);
         this.vUsb = (ImageView) this.mStatusBarContainer.findViewById(R.id.status_usb);
+        this.vSdcard =this.mStatusBarContainer.findViewById(R.id.status_sdcard);
         this.mConnectivityManager = (ConnectivityManager) this.mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
         this.mWifiManager = (WifiManager) this.mContext.getSystemService(Context.WIFI_SERVICE);
     }
@@ -207,15 +208,23 @@ public class StatusBar extends RelativeLayout {
     // TODO: 19-11-30 listen usb state
     public void storageYN(Context context) {
         StorageManager storageManagerService= (StorageManager) this.mContext.getSystemService(Context.STORAGE_SERVICE);
+        Message isSd=new Message();
+        isSd.what=2;
+        isSd.arg1=0;
+        boolean hasUSB=false;
         for (VolumeInfo vol : storageManagerService.getVolumes()) {
-            if (vol.getDisk() == null || !vol.getDisk().isUsb()) {
-                this.vUsb.setImageResource(R.drawable.img_status_usb1);
-            } else {
-                this.vUsb.setImageResource(R.drawable.img_status_usb);
+            if (vol.getDisk() != null && vol.getDisk().isUsb()) {
+                hasUSB=true;
             }
             if (vol.getDisk() != null && vol.getDisk().isSd()) {
-                VolumeInfo sdcardVolume = vol;
+                isSd.arg1=1;
             }
         }
+        if(hasUSB){
+            this.vUsb.setImageResource(R.drawable.img_status_usb);
+        }else {
+            this.vUsb.setImageResource(R.drawable.img_status_usb1);
+        }
+        StatusBar.this.mHandler.sendMessage(isSd);
     }
 }
